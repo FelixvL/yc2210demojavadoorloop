@@ -20,7 +20,21 @@ public class ChatService {
 		
 		
 	}
+	public Chat opslaan(Chat c) {
+		return sammie.save(c);
+	}
 
+	public Chat findById(long l) {
+		// TODO Auto-generated method stub
+		return sammie.findById(l).get();
+	}
+	public Iterable<Chat> findAll(){
+		return sammie.findAll();
+	}
+	public Chat findOne(long num) {
+		// TODO Auto-generated method stub
+		return sammie.findById(num).get();
+	}
 }
 
 

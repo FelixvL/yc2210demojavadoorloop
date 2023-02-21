@@ -1,6 +1,7 @@
 package nl.capital.yc2209fsvrijdag.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,5 +41,19 @@ public class ChatEndpoint {
 		System.out.println("hij doet het --" + go);
 		System.out.println("derde "+c.getText());
 	}
+	@PostMapping("/ditgaanweopslaan")
+	public Chat postIets(@RequestBody Chat chatje) {
+		return map.opslaan(chatje);
+	}
+	
+	@GetMapping("/EenHeleLijst")
+    public ResponseEntity<Iterable<Chat>> list() {
+        return ResponseEntity.ok(this.map.findAll());
+    }
+	@GetMapping("/specifieke/{id}")
+    public ResponseEntity<Chat> eentje(@PathVariable("id") long num) {
+        return ResponseEntity.ok(this.map.findOne(num));
+    }
+	
 	
 }
